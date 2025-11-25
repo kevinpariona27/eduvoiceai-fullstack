@@ -1,0 +1,11 @@
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\bin\Debug\net9.0\EduVoiceAI.Domain.deps.json
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\bin\Debug\net9.0\EduVoiceAI.Domain.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\bin\Debug\net9.0\EduVoiceAI.Domain.pdb
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.AssemblyInfoInputs.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.AssemblyInfo.cs
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.csproj.CoreCompileInputs.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\refint\EduVoiceAI.Domain.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\EduVoiceAI.Domain.pdb
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Domain\obj\Debug\net9.0\ref\EduVoiceAI.Domain.dll

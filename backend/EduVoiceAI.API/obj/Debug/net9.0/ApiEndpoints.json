@@ -1,0 +1,710 @@
+[
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "GetAllEvents",
+    "RelativePath": "api/EventReminders",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.EventReminderDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "CreateEvent",
+    "RelativePath": "api/EventReminders",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "eventDto",
+        "Type": "EduVoiceAI.API.Models.Dto.EventReminderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.EventReminderDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "GetEventById",
+    "RelativePath": "api/EventReminders/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.EventReminderDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "UpdateEvent",
+    "RelativePath": "api/EventReminders/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "eventDto",
+        "Type": "EduVoiceAI.API.Models.Dto.EventReminderDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "DeleteEvent",
+    "RelativePath": "api/EventReminders/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "GetEventsByType",
+    "RelativePath": "api/EventReminders/type/{type}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "type",
+        "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.EventReminderDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "GetUpcomingEvents",
+    "RelativePath": "api/EventReminders/upcoming/{days}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "days",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.EventReminderDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.EventRemindersController",
+    "Method": "GetEventsByUserId",
+    "RelativePath": "api/EventReminders/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.EventReminderDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Eventos"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.IAController",
+    "Method": "Ask",
+    "RelativePath": "api/IA/ask",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "EduVoiceAI.API.Controllers.IARequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Controllers.IAResponseDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Inteligencia Artificial"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.IAController",
+    "Method": "TranscribeVoice",
+    "RelativePath": "api/IA/voice",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "audioFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Controllers.VoiceTranscriptionResponse",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Inteligencia Artificial"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "GetAllTasks",
+    "RelativePath": "api/TaskPlans",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.TaskPlanDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "CreateTask",
+    "RelativePath": "api/TaskPlans",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskDto",
+        "Type": "EduVoiceAI.API.Models.Dto.TaskPlanDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.TaskPlanDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "GetTaskById",
+    "RelativePath": "api/TaskPlans/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.TaskPlanDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "UpdateTask",
+    "RelativePath": "api/TaskPlans/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskDto",
+        "Type": "EduVoiceAI.API.Models.Dto.TaskPlanDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "DeleteTask",
+    "RelativePath": "api/TaskPlans/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "ToggleTaskCompletion",
+    "RelativePath": "api/TaskPlans/{id}/complete",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "isCompleted",
+        "Type": "System.Boolean",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.TaskPlansController",
+    "Method": "GetTasksByUserId",
+    "RelativePath": "api/TaskPlans/user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.TaskPlanDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Tareas"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.UserProfilesController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/UserProfiles",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[EduVoiceAI.API.Models.Dto.UserProfileDto, EduVoiceAI.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Usuarios"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.UserProfilesController",
+    "Method": "CreateUser",
+    "RelativePath": "api/UserProfiles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDto",
+        "Type": "EduVoiceAI.API.Models.Dto.UserProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.UserProfileDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Usuarios"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.UserProfilesController",
+    "Method": "GetUserById",
+    "RelativePath": "api/UserProfiles/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "EduVoiceAI.API.Models.Dto.UserProfileDto",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Usuarios"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.UserProfilesController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/UserProfiles/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "userDto",
+        "Type": "EduVoiceAI.API.Models.Dto.UserProfileDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Usuarios"
+    ]
+  },
+  {
+    "ContainingType": "EduVoiceAI.API.Controllers.UserProfilesController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/UserProfiles/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "application/json"
+        ],
+        "StatusCode": 404
+      }
+    ],
+    "Tags": [
+      "Gesti\u00F3n de Usuarios"
+    ]
+  }
+]

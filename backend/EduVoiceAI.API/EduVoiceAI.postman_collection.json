@@ -1,0 +1,334 @@
+{
+  "info": {
+    "name": "EduVoiceAI API Collection",
+    "description": "Colección completa de peticiones para EduVoiceAI API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:5001",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "UserProfiles",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/UserProfiles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "UserProfiles"]
+            }
+          }
+        },
+        {
+          "name": "Get User By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/UserProfiles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "UserProfiles", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Pedro Sánchez\",\n  \"email\": \"pedro.sanchez@eduvoice.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/UserProfiles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "UserProfiles"]
+            }
+          }
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"name\": \"Juan Pérez García\",\n  \"email\": \"juan.perez.garcia@eduvoice.com\",\n  \"createdAt\": \"2024-06-15T10:30:00Z\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/UserProfiles/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "UserProfiles", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/UserProfiles/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "UserProfiles", "5"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "TaskPlans",
+      "item": [
+        {
+          "name": "Get All Tasks",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans"]
+            }
+          }
+        },
+        {
+          "name": "Get Task By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Tasks By User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Create Task",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Estudiar para Examen de Historia\",\n  \"description\": \"Repasar los capítulos 10-15 sobre la Segunda Guerra Mundial\",\n  \"dueDate\": \"2024-12-20T23:59:59\",\n  \"isCompleted\": false,\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans"]
+            }
+          }
+        },
+        {
+          "name": "Update Task",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"title\": \"Estudiar Matemáticas Avanzadas\",\n  \"description\": \"Repasar capítulos 1-8 de cálculo diferencial e integral\",\n  \"dueDate\": \"2024-12-25T23:59:59\",\n  \"isCompleted\": false,\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans", "1"]
+            }
+          }
+        },
+        {
+          "name": "Toggle Task Completion",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "true"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans/1/complete",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans", "1", "complete"]
+            }
+          }
+        },
+        {
+          "name": "Delete Task",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/TaskPlans/5",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "TaskPlans", "5"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "EventReminders",
+      "item": [
+        {
+          "name": "Get All Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders"]
+            }
+          }
+        },
+        {
+          "name": "Get Event By ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Events By User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/user/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "user", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get Events By Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/type/Examen",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "type", "Examen"]
+            }
+          }
+        },
+        {
+          "name": "Get Upcoming Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/upcoming/7",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "upcoming", "7"]
+            }
+          }
+        },
+        {
+          "name": "Create Event",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Examen de Cálculo Integral\",\n  \"description\": \"Examen final del semestre - incluye todos los temas vistos\",\n  \"date\": \"2024-12-20T10:00:00\",\n  \"type\": \"Examen\",\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders"]
+            }
+          }
+        },
+        {
+          "name": "Update Event",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": 1,\n  \"title\": \"Examen Final de Matemáticas Avanzadas\",\n  \"description\": \"Examen final de cálculo diferencial e integral - Aula 305\",\n  \"date\": \"2024-12-20T10:30:00\",\n  \"type\": \"Examen\",\n  \"userId\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Event",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/EventReminders/10",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "EventReminders", "10"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

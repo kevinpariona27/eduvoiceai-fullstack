@@ -1,0 +1,17 @@
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Infrastructure.deps.json
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Infrastructure.runtimeconfig.json
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Infrastructure.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Infrastructure.pdb
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Domain.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\bin\Debug\net9.0\EduVoiceAI.Domain.pdb
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.csproj.AssemblyReference.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.AssemblyInfoInputs.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.AssemblyInfo.cs
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoice.900C172B.Up2Date
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\refint\EduVoiceAI.Infrastructure.dll
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.pdb
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\EduVoiceAI.Infrastructure.genruntimeconfig.cache
+C:\Proyectos\EduVoiceAI\EduVoiceAI.Infrastructure\obj\Debug\net9.0\ref\EduVoiceAI.Infrastructure.dll

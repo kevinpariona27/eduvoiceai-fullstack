@@ -1,0 +1,435 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EduVoiceAI.API</name>
+    </assembly>
+    <members>
+        <member name="T:EduVoiceAI.API.Configuration.GeminiAISettings">
+            <summary>
+            Configuración para la integración con Gemini AI
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Configuration.GeminiAISettings.BaseUrl">
+            <summary>
+            URL base del servicio Gemini AI
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Configuration.GeminiAISettings.Model">
+            <summary>
+            Modelo de Gemini AI a utilizar
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Configuration.GeminiAISettings.ApiKey">
+            <summary>
+            Clave de API para autenticación con Gemini AI
+            </summary>
+        </member>
+        <member name="T:EduVoiceAI.API.Configuration.HuggingFaceSettings">
+            <summary>
+            Configuración para la integración con Hugging Face
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Configuration.HuggingFaceSettings.BaseUrl">
+            <summary>
+            URL base del servicio Hugging Face
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Configuration.HuggingFaceSettings.ApiKey">
+            <summary>
+            Clave de API para autenticación con Hugging Face
+            </summary>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.EventRemindersController">
+            <summary>
+            Controlador para gestionar recordatorios de eventos
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.GetAllEvents">
+            <summary>
+            Obtiene todos los eventos
+            </summary>
+            <returns>Lista de eventos</returns>
+            <response code="200">Retorna la lista de eventos exitosamente</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.GetEventById(System.Int32)">
+            <summary>
+            Obtiene un evento por ID
+            </summary>
+            <param name="id">ID del evento</param>
+            <returns>Evento encontrado</returns>
+            <response code="200">Retorna el evento encontrado</response>
+            <response code="404">Evento no encontrado</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.GetEventsByUserId(System.Int32)">
+            <summary>
+            Obtiene todos los eventos de un usuario específico
+            </summary>
+            <param name="userId">ID del usuario</param>
+            <returns>Lista de eventos del usuario</returns>
+            <response code="200">Retorna los eventos del usuario</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.GetEventsByType(System.String)">
+            <summary>
+            Obtiene eventos por tipo
+            </summary>
+            <param name="type">Tipo de evento (ej: Cumpleaños, Clase, Examen)</param>
+            <returns>Lista de eventos del tipo especificado</returns>
+            <response code="200">Retorna los eventos del tipo especificado</response>
+            <remarks>
+            Tipos de eventos comunes:
+            - Cumpleaños
+            - Clase
+            - Examen
+            - Reunión
+            - Tarea
+            - Proyecto
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.GetUpcomingEvents(System.Int32)">
+            <summary>
+            Obtiene eventos próximos (en los próximos N días)
+            </summary>
+            <param name="days">Número de días hacia adelante (por defecto: 7)</param>
+            <returns>Lista de eventos próximos ordenados por fecha</returns>
+            <response code="200">Retorna los eventos próximos ordenados</response>
+            <remarks>
+            Este endpoint es útil para mostrar un calendario de eventos cercanos.
+            Los eventos se devuelven ordenados por fecha ascendente.
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.CreateEvent(EduVoiceAI.API.Models.Dto.EventReminderDto)">
+            <summary>
+            Crea un nuevo evento
+            </summary>
+            <param name="eventDto">Datos del evento a crear</param>
+            <returns>Evento creado</returns>
+            <response code="201">Evento creado exitosamente</response>
+            <response code="400">Datos de entrada inválidos o usuario no existe</response>
+            <remarks>
+            Ejemplo de solicitud:
+            
+                POST /api/EventReminders
+                {
+                    "title": "Examen Final de Matemáticas",
+                    "description": "Examen final del curso de Cálculo I",
+                    "date": "2024-12-20T10:00:00",
+                    "type": "Examen",
+                    "userId": 1
+                }
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.UpdateEvent(System.Int32,EduVoiceAI.API.Models.Dto.EventReminderDto)">
+            <summary>
+            Actualiza un evento existente
+            </summary>
+            <param name="id">ID del evento a actualizar</param>
+            <param name="eventDto">Datos actualizados del evento</param>
+            <returns>Sin contenido si la actualización es exitosa</returns>
+            <response code="204">Evento actualizado exitosamente</response>
+            <response code="400">Datos de entrada inválidos o ID no coincide</response>
+            <response code="404">Evento no encontrado</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.EventRemindersController.DeleteEvent(System.Int32)">
+            <summary>
+            Elimina un evento
+            </summary>
+            <param name="id">ID del evento a eliminar</param>
+            <returns>Sin contenido si la eliminación es exitosa</returns>
+            <response code="204">Evento eliminado exitosamente</response>
+            <response code="404">Evento no encontrado</response>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.IAController">
+            <summary>
+            Controlador para interactuar con servicios de inteligencia artificial
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.IAController.Ask(EduVoiceAI.API.Controllers.IARequestDto)">
+            <summary>
+            Envía una pregunta al servicio de IA
+            </summary>
+            <param name="request">Objeto con el prompt de la pregunta y contexto opcional</param>
+            <returns>Respuesta generada por la IA</returns>
+            <response code="200">Retorna la respuesta de la IA exitosamente</response>
+            <response code="400">Prompt inválido o vacío</response>
+            <remarks>
+            Ejemplo de solicitud:
+            
+                POST /api/ia/ask
+                {
+                    "prompt": "¿Cómo puedo organizar mejor mi tiempo de estudio?"
+                }
+                
+            Con contexto:
+            
+                POST /api/ia/ask
+                {
+                    "prompt": "¿Qué temas debo repasar?",
+                    "context": "Tengo un examen de matemáticas la próxima semana"
+                }
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.IAController.TranscribeVoice(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Transcribe un archivo de audio a texto usando IA
+            </summary>
+            <param name="audioFile">Archivo de audio (MP3, WAV, M4A, OGG)</param>
+            <returns>Texto transcrito del audio</returns>
+            <response code="200">Retorna el texto transcrito exitosamente</response>
+            <response code="400">Archivo de audio inválido o formato no soportado</response>
+            <remarks>
+            Ejemplo de solicitud usando cURL:
+            
+                curl -X POST "https://localhost:5001/api/ia/voice" \
+                  -H "Content-Type: multipart/form-data" \
+                  -F "audioFile=@/path/to/audio.mp3"
+                
+            Formatos soportados: MP3, WAV, M4A, OGG
+            Tamaño máximo recomendado: 10MB
+            </remarks>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.IARequestDto">
+            <summary>
+            Modelo de solicitud para el servicio de IA
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.IARequestDto.Prompt">
+            <summary>
+            Pregunta o prompt para la IA (requerido)
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.IARequestDto.Context">
+            <summary>
+            Contexto adicional para la pregunta (opcional)
+            </summary>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.IAResponseDto">
+            <summary>
+            Modelo de respuesta del servicio de IA
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.IAResponseDto.Response">
+            <summary>
+            Respuesta generada por la IA
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.IAResponseDto.Timestamp">
+            <summary>
+            Fecha y hora de la respuesta
+            </summary>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse">
+            <summary>
+            Modelo de respuesta para la transcripción de voz
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse.FileName">
+            <summary>
+            Nombre del archivo de audio
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse.FileSize">
+            <summary>
+            Tamaño del archivo en bytes
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse.ContentType">
+            <summary>
+            Tipo de contenido del archivo
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse.Transcription">
+            <summary>
+            Texto transcrito del audio
+            </summary>
+        </member>
+        <member name="P:EduVoiceAI.API.Controllers.VoiceTranscriptionResponse.Timestamp">
+            <summary>
+            Fecha y hora de la transcripción
+            </summary>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.TaskPlansController">
+            <summary>
+            Controlador para gestionar planes de tareas
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.GetAllTasks">
+            <summary>
+            Obtiene todas las tareas
+            </summary>
+            <returns>Lista de tareas</returns>
+            <response code="200">Retorna la lista de tareas exitosamente</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.GetTaskById(System.Int32)">
+            <summary>
+            Obtiene una tarea por ID
+            </summary>
+            <param name="id">ID de la tarea</param>
+            <returns>Tarea encontrada</returns>
+            <response code="200">Retorna la tarea encontrada</response>
+            <response code="404">Tarea no encontrada</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.GetTasksByUserId(System.Int32)">
+            <summary>
+            Obtiene todas las tareas de un usuario específico
+            </summary>
+            <param name="userId">ID del usuario</param>
+            <returns>Lista de tareas del usuario</returns>
+            <response code="200">Retorna las tareas del usuario</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.CreateTask(EduVoiceAI.API.Models.Dto.TaskPlanDto)">
+            <summary>
+            Crea una nueva tarea
+            </summary>
+            <param name="taskDto">Datos de la tarea a crear</param>
+            <returns>Tarea creada</returns>
+            <response code="201">Tarea creada exitosamente</response>
+            <response code="400">Datos de entrada inválidos o usuario no existe</response>
+            <remarks>
+            Ejemplo de solicitud:
+            
+                POST /api/TaskPlans
+                {
+                    "title": "Estudiar matemáticas",
+                    "description": "Repasar capítulos 1-5 del libro de álgebra",
+                    "dueDate": "2024-12-31T23:59:59",
+                    "isCompleted": false,
+                    "userId": 1
+                }
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.UpdateTask(System.Int32,EduVoiceAI.API.Models.Dto.TaskPlanDto)">
+            <summary>
+            Actualiza una tarea existente
+            </summary>
+            <param name="id">ID de la tarea a actualizar</param>
+            <param name="taskDto">Datos actualizados de la tarea</param>
+            <returns>Sin contenido si la actualización es exitosa</returns>
+            <response code="204">Tarea actualizada exitosamente</response>
+            <response code="400">Datos de entrada inválidos o ID no coincide</response>
+            <response code="404">Tarea no encontrada</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.ToggleTaskCompletion(System.Int32,System.Boolean)">
+            <summary>
+            Marca una tarea como completada o no completada
+            </summary>
+            <param name="id">ID de la tarea</param>
+            <param name="isCompleted">Estado de completitud (true = completada, false = pendiente)</param>
+            <returns>Sin contenido si la actualización es exitosa</returns>
+            <response code="204">Estado actualizado exitosamente</response>
+            <response code="404">Tarea no encontrada</response>
+            <remarks>
+            Este endpoint permite cambiar rápidamente el estado de una tarea sin necesidad de enviar todos los datos.
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.TaskPlansController.DeleteTask(System.Int32)">
+            <summary>
+            Elimina una tarea
+            </summary>
+            <param name="id">ID de la tarea a eliminar</param>
+            <returns>Sin contenido si la eliminación es exitosa</returns>
+            <response code="204">Tarea eliminada exitosamente</response>
+            <response code="404">Tarea no encontrada</response>
+        </member>
+        <member name="T:EduVoiceAI.API.Controllers.UserProfilesController">
+            <summary>
+            Controlador para gestionar perfiles de usuario
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.UserProfilesController.GetAllUsers">
+            <summary>
+            Obtiene todos los perfiles de usuario
+            </summary>
+            <returns>Lista de perfiles de usuario</returns>
+            <response code="200">Retorna la lista de usuarios exitosamente</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.UserProfilesController.GetUserById(System.Int32)">
+            <summary>
+            Obtiene un perfil de usuario por ID
+            </summary>
+            <param name="id">ID del usuario</param>
+            <returns>Perfil de usuario</returns>
+            <response code="200">Retorna el usuario encontrado</response>
+            <response code="404">Usuario no encontrado</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.UserProfilesController.CreateUser(EduVoiceAI.API.Models.Dto.UserProfileDto)">
+            <summary>
+            Crea un nuevo perfil de usuario
+            </summary>
+            <param name="userDto">Datos del usuario a crear</param>
+            <returns>Usuario creado</returns>
+            <response code="201">Usuario creado exitosamente</response>
+            <response code="400">Datos de entrada inválidos</response>
+            <remarks>
+            Ejemplo de solicitud:
+            
+                POST /api/UserProfiles
+                {
+                    "name": "Juan Pérez",
+                    "email": "juan.perez@ejemplo.com"
+                }
+            </remarks>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.UserProfilesController.UpdateUser(System.Int32,EduVoiceAI.API.Models.Dto.UserProfileDto)">
+            <summary>
+            Actualiza un perfil de usuario existente
+            </summary>
+            <param name="id">ID del usuario a actualizar</param>
+            <param name="userDto">Datos actualizados del usuario</param>
+            <returns>Sin contenido si la actualización es exitosa</returns>
+            <response code="204">Usuario actualizado exitosamente</response>
+            <response code="400">Datos de entrada inválidos o ID no coincide</response>
+            <response code="404">Usuario no encontrado</response>
+        </member>
+        <member name="M:EduVoiceAI.API.Controllers.UserProfilesController.DeleteUser(System.Int32)">
+            <summary>
+            Elimina un perfil de usuario
+            </summary>
+            <param name="id">ID del usuario a eliminar</param>
+            <returns>Sin contenido si la eliminación es exitosa</returns>
+            <response code="204">Usuario eliminado exitosamente</response>
+            <response code="404">Usuario no encontrado</response>
+        </member>
+        <member name="T:EduVoiceAI.API.Services.IAService">
+            <summary>
+            Implementación del servicio de inteligencia artificial
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IAService.AskAsync(System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IAService.AskWithContextAsync(System.String,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IAService.TranscribeAudioAsync(System.IO.Stream,System.String)">
+            <inheritdoc/>
+        </member>
+        <member name="T:EduVoiceAI.API.Services.IIAService">
+            <summary>
+            Interfaz para el servicio de inteligencia artificial
+            </summary>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IIAService.AskAsync(System.String)">
+            <summary>
+            Envía una pregunta al servicio de IA
+            </summary>
+            <param name="prompt">Pregunta o prompt para la IA</param>
+            <returns>Respuesta de la IA</returns>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IIAService.AskWithContextAsync(System.String,System.String)">
+            <summary>
+            Envía una pregunta con contexto adicional al servicio de IA
+            </summary>
+            <param name="prompt">Pregunta o prompt para la IA</param>
+            <param name="context">Contexto adicional para la pregunta</param>
+            <returns>Respuesta de la IA</returns>
+        </member>
+        <member name="M:EduVoiceAI.API.Services.IIAService.TranscribeAudioAsync(System.IO.Stream,System.String)">
+            <summary>
+            Transcribe un archivo de audio a texto
+            </summary>
+            <param name="audioStream">Stream del archivo de audio</param>
+            <param name="fileName">Nombre del archivo de audio</param>
+            <returns>Texto transcrito del audio</returns>
+        </member>
+    </members>
+</doc>

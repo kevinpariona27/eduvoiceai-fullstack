@@ -1,0 +1,127 @@
+# ==========================================
+# FRONTEND (React + Node.js)
+# ==========================================
+
+# Dependencies
+frontend/node_modules/
+frontend/package-lock.json
+frontend/yarn.lock
+frontend/pnpm-lock.yaml
+
+# Build output
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/.cache/
+
+# Environment variables
+frontend/.env
+frontend/.env.local
+frontend/.env.production.local
+frontend/.env.development.local
+frontend/.env.test.local
+
+# Logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+frontend/lerna-debug.log*
+
+# ==========================================
+# BACKEND (.NET)
+# ==========================================
+
+# Build results
+backend/[Bb]in/
+backend/[Oo]bj/
+backend/[Ll]og/
+backend/[Ll]ogs/
+
+# Visual Studio cache/options
+backend/.vs/
+backend/.vscode/
+backend/*.user
+backend/*.suo
+backend/*.userosscache
+backend/*.sln.docstates
+
+# NuGet Packages
+backend/*.nupkg
+backend/*.snupkg
+backend/**/packages/*
+
+# Entity Framework migrations (opcional, comentar si quieres versionar)
+# backend/**/Migrations/
+
+# User-specific files
+backend/*.userprefs
+backend/*.dbmdl
+backend/*.jfm
+
+# SQL Server files
+backend/*.mdf
+backend/*.ldf
+backend/*.ndf
+
+# Connection strings (seguridad)
+backend/**/appsettings.Development.json
+backend/**/appsettings.Production.json
+
+# ==========================================
+# IDE / EDITORS
+# ==========================================
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# ==========================================
+# SISTEMA OPERATIVO
+# ==========================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# ==========================================
+# OTROS
+# ==========================================
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Test coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Documentation generated
+docs/_build/

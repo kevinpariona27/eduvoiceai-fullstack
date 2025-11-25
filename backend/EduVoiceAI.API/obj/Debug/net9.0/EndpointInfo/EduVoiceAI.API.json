@@ -1,0 +1,1169 @@
+{
+  "openapi": "3.0.4",
+  "info": {
+    "title": "EduVoiceAI API",
+    "description": "\r\n            API RESTful para la plataforma EduVoiceAI - Sistema de gestión educativa con asistencia por voz.\r\n            \r\n            Esta API proporciona endpoints para:\r\n            - **UserProfiles**: Gestión de perfiles de usuario\r\n            - **TaskPlans**: Administración de tareas y planes de estudio\r\n            - **EventReminders**: Manejo de recordatorios y eventos importantes\r\n            \r\n            Todos los endpoints soportan operaciones CRUD completas y utilizan DTOs para la transferencia de datos.\r\n        ",
+    "contact": {
+      "name": "EduVoiceAI Team",
+      "url": "https://eduvoiceai.com",
+      "email": "support@eduvoiceai.com"
+    },
+    "license": {
+      "name": "MIT License",
+      "url": "https://opensource.org/licenses/MIT"
+    },
+    "version": "v1"
+  },
+  "paths": {
+    "/api/EventReminders/{id}": {
+      "delete": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Elimina un evento",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del evento a eliminar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Evento eliminado exitosamente"
+          },
+          "404": {
+            "description": "Evento no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Obtiene un evento por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del evento",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna el evento encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventReminderDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Evento no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Actualiza un evento existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del evento a actualizar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Datos actualizados del evento",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Evento actualizado exitosamente"
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o ID no coincide",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Evento no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EventReminders": {
+      "get": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Obtiene todos los eventos",
+        "responses": {
+          "200": {
+            "description": "Retorna la lista de eventos exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventReminderDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Crea un nuevo evento",
+        "description": "Ejemplo de solicitud:\r\n\r\n    POST /api/EventReminders\r\n    {\r\n        \"title\": \"Examen Final de Matemáticas\",\r\n        \"description\": \"Examen final del curso de Cálculo I\",\r\n        \"date\": \"2024-12-20T10:00:00\",\r\n        \"type\": \"Examen\",\r\n        \"userId\": 1\r\n    }",
+        "requestBody": {
+          "description": "Datos del evento a crear",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EventReminderDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Evento creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EventReminderDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o usuario no existe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EventReminders/user/{userId}": {
+      "get": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Obtiene todos los eventos de un usuario específico",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID del usuario",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna los eventos del usuario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventReminderDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EventReminders/type/{type}": {
+      "get": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Obtiene eventos por tipo",
+        "description": "Tipos de eventos comunes:\r\n- Cumpleaños\r\n- Clase\r\n- Examen\r\n- Reunión\r\n- Tarea\r\n- Proyecto",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "path",
+            "description": "Tipo de evento (ej: Cumpleaños, Clase, Examen)",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna los eventos del tipo especificado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventReminderDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/EventReminders/upcoming/{days}": {
+      "get": {
+        "tags": [
+          "EventReminders"
+        ],
+        "summary": "Obtiene eventos próximos (en los próximos N días)",
+        "description": "Este endpoint es útil para mostrar un calendario de eventos cercanos.\r\nLos eventos se devuelven ordenados por fecha ascendente.",
+        "parameters": [
+          {
+            "name": "days",
+            "in": "path",
+            "description": "Número de días hacia adelante (por defecto: 7)",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "default": 7
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna los eventos próximos ordenados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/EventReminderDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IA/ask": {
+      "post": {
+        "tags": [
+          "IA"
+        ],
+        "summary": "Envía una pregunta al servicio de IA",
+        "description": "Ejemplo de solicitud:\r\n\r\n    POST /api/ia/ask\r\n    {\r\n        \"prompt\": \"¿Cómo puedo organizar mejor mi tiempo de estudio?\"\r\n    }\r\n    \r\nCon contexto:\r\n\r\n    POST /api/ia/ask\r\n    {\r\n        \"prompt\": \"¿Qué temas debo repasar?\",\r\n        \"context\": \"Tengo un examen de matemáticas la próxima semana\"\r\n    }",
+        "requestBody": {
+          "description": "Objeto con el prompt de la pregunta y contexto opcional",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IARequestDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IARequestDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/IARequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Retorna la respuesta de la IA exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/IAResponseDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Prompt inválido o vacío",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/IA/voice": {
+      "post": {
+        "tags": [
+          "IA"
+        ],
+        "summary": "Transcribe un archivo de audio a texto usando IA",
+        "description": "Ejemplo de solicitud usando cURL:\r\n\r\n    curl -X POST \"https://localhost:5001/api/ia/voice\" \\\r\n      -H \"Content-Type: multipart/form-data\" \\\r\n      -F \"audioFile=@/path/to/audio.mp3\"\r\n    \r\nFormatos soportados: MP3, WAV, M4A, OGG\r\nTamaño máximo recomendado: 10MB",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "required": [
+                  "audioFile"
+                ],
+                "type": "object",
+                "properties": {
+                  "audioFile": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Retorna el texto transcrito exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/VoiceTranscriptionResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Archivo de audio inválido o formato no soportado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TaskPlans/{id}": {
+      "delete": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Elimina una tarea",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la tarea a eliminar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Tarea eliminada exitosamente"
+          },
+          "404": {
+            "description": "Tarea no encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Obtiene una tarea por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la tarea",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna la tarea encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskPlanDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tarea no encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Actualiza una tarea existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la tarea a actualizar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Datos actualizados de la tarea",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Tarea actualizada exitosamente"
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o ID no coincide",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Tarea no encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TaskPlans": {
+      "get": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Obtiene todas las tareas",
+        "responses": {
+          "200": {
+            "description": "Retorna la lista de tareas exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskPlanDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Crea una nueva tarea",
+        "description": "Ejemplo de solicitud:\r\n\r\n    POST /api/TaskPlans\r\n    {\r\n        \"title\": \"Estudiar matemáticas\",\r\n        \"description\": \"Repasar capítulos 1-5 del libro de álgebra\",\r\n        \"dueDate\": \"2024-12-31T23:59:59\",\r\n        \"isCompleted\": false,\r\n        \"userId\": 1\r\n    }",
+        "requestBody": {
+          "description": "Datos de la tarea a crear",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/TaskPlanDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Tarea creada exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskPlanDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o usuario no existe",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TaskPlans/user/{userId}": {
+      "get": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Obtiene todas las tareas de un usuario específico",
+        "parameters": [
+          {
+            "name": "userId",
+            "in": "path",
+            "description": "ID del usuario",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna las tareas del usuario",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/TaskPlanDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/TaskPlans/{id}/complete": {
+      "patch": {
+        "tags": [
+          "TaskPlans"
+        ],
+        "summary": "Marca una tarea como completada o no completada",
+        "description": "Este endpoint permite cambiar rápidamente el estado de una tarea sin necesidad de enviar todos los datos.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID de la tarea",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Estado de completitud (true = completada, false = pendiente)",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "boolean"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "boolean"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Estado actualizado exitosamente"
+          },
+          "404": {
+            "description": "Tarea no encontrada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserProfiles/{id}": {
+      "delete": {
+        "tags": [
+          "UserProfiles"
+        ],
+        "summary": "Elimina un perfil de usuario",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del usuario a eliminar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Usuario eliminado exitosamente"
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "UserProfiles"
+        ],
+        "summary": "Obtiene un perfil de usuario por ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del usuario",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Retorna el usuario encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "UserProfiles"
+        ],
+        "summary": "Actualiza un perfil de usuario existente",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID del usuario a actualizar",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "description": "Datos actualizados del usuario",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Usuario actualizado exitosamente"
+          },
+          "400": {
+            "description": "Datos de entrada inválidos o ID no coincide",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Usuario no encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/UserProfiles": {
+      "get": {
+        "tags": [
+          "UserProfiles"
+        ],
+        "summary": "Obtiene todos los perfiles de usuario",
+        "responses": {
+          "200": {
+            "description": "Retorna la lista de usuarios exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/UserProfileDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserProfiles"
+        ],
+        "summary": "Crea un nuevo perfil de usuario",
+        "description": "Ejemplo de solicitud:\r\n\r\n    POST /api/UserProfiles\r\n    {\r\n        \"name\": \"Juan Pérez\",\r\n        \"email\": \"juan.perez@ejemplo.com\"\r\n    }",
+        "requestBody": {
+          "description": "Datos del usuario a crear",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Usuario creado exitosamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Datos de entrada inválidos",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "EventReminderDto": {
+        "required": [
+          "date",
+          "title",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 500,
+            "type": "string",
+            "nullable": true
+          },
+          "date": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "type": {
+            "maxLength": 50,
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "IARequestDto": {
+        "required": [
+          "prompt"
+        ],
+        "type": "object",
+        "properties": {
+          "prompt": {
+            "minLength": 1,
+            "type": "string",
+            "description": "Pregunta o prompt para la IA (requerido)"
+          },
+          "context": {
+            "type": "string",
+            "description": "Contexto adicional para la pregunta (opcional)",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false,
+        "description": "Modelo de solicitud para el servicio de IA"
+      },
+      "IAResponseDto": {
+        "type": "object",
+        "properties": {
+          "response": {
+            "type": "string",
+            "description": "Respuesta generada por la IA",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Fecha y hora de la respuesta",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Modelo de respuesta del servicio de IA"
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "TaskPlanDto": {
+        "required": [
+          "description",
+          "dueDate",
+          "title",
+          "userId"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "title": {
+            "maxLength": 200,
+            "minLength": 1,
+            "type": "string"
+          },
+          "description": {
+            "maxLength": 1000,
+            "minLength": 1,
+            "type": "string"
+          },
+          "dueDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "isCompleted": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserProfileDto": {
+        "required": [
+          "email",
+          "name"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
+          },
+          "email": {
+            "maxLength": 150,
+            "minLength": 1,
+            "type": "string",
+            "format": "email"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VoiceTranscriptionResponse": {
+        "type": "object",
+        "properties": {
+          "fileName": {
+            "type": "string",
+            "description": "Nombre del archivo de audio",
+            "nullable": true
+          },
+          "fileSize": {
+            "type": "integer",
+            "description": "Tamaño del archivo en bytes",
+            "format": "int64"
+          },
+          "contentType": {
+            "type": "string",
+            "description": "Tipo de contenido del archivo",
+            "nullable": true
+          },
+          "transcription": {
+            "type": "string",
+            "description": "Texto transcrito del audio",
+            "nullable": true
+          },
+          "timestamp": {
+            "type": "string",
+            "description": "Fecha y hora de la transcripción",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false,
+        "description": "Modelo de respuesta para la transcripción de voz"
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "EventReminders",
+      "description": "Controlador para gestionar recordatorios de eventos"
+    },
+    {
+      "name": "IA",
+      "description": "Controlador para interactuar con servicios de inteligencia artificial"
+    },
+    {
+      "name": "TaskPlans",
+      "description": "Controlador para gestionar planes de tareas"
+    },
+    {
+      "name": "UserProfiles",
+      "description": "Controlador para gestionar perfiles de usuario"
+    }
+  ]
+}
